@@ -4,6 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="encabezado">
+        <div class="contenedor-logo">
+            <img class="logo" src="css/pictures/logo-11.png" alt="Logo de la empresa">
+        </div>
+        <nav class="navegacion">
+            <ul class="lista-navegacion">
+                <ul class="lista-navegacion">
+                    <li class="Home"><a href="index.html">HOME</a></li>
+                    <li class="Login"><a href="login.html">LOGIN</a></li>
+                    <li class="Products"><a href="producto.html">PRODUCTS</li>
+                    <li class="almacen"><a href="almacen.html">ALMACEN</a></li>
+                </ul>
+        </nav>
+        
+    </header>
+
+    <main class="contenedor-usuario">
+        <form id="login-form" action="/login" method="POST" class="formulario">
+            <div class="campo-usuario">
+                <label for="email">EMAIL</label>
+                <br>
+                <input type="email" id="email" name="username" required>
+            </div>
+            <div class="campo-contraseña">
+                <label for="password">PASSWORD</label>
+                <br>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="boton-enviar">LOGIN</button>
+            <div class="registro">
+                <p>Don't have an account?
+                    <br>
+                    <a href="registroUsuario.html">Sign up</a></p>
+            </div>
+        </form>
+    </main>
+    <script src="./js/login.js"></script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
     <header class="encabezado">
@@ -14,7 +64,7 @@
             <ul class="lista-navegacion">
                 <li class="item-navegacion"><a href="#">Home</a></li>
                 <li class="item-navegacion"><a href="#">Login</a></li>
-                <li class="item-navegacion"><a href="#">Products</a></li> <!-- ✅ correcto -->
+                <li class="item-navegacion"><a href="#">Products</a></li> 
 
                 <li class="item-navegacion"><a href="#">Contact</a></li>
             </ul>
@@ -40,4 +90,4 @@
     </main>
     <script src="./js/login.js"></script>
 </body>
-</html>
+</html> -->

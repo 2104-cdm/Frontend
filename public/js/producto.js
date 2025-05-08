@@ -1,4 +1,4 @@
-// tienda.js
+// producto.js
 
 const token = localStorage.getItem('token');
 

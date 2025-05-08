@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+    <header class="encabezado">
+        <div class="contenedor-logo">
+            <img class="logo" src="css/pictures/logo-11.png" alt="Logo de la empresa">
+        </div>
+        <nav class="navegacion">
+            <ul class="lista-navegacion">
+                <li class="Home"><a href="index.html">HOME</a></li>
+                <li class="Login"><a href="login.html">LOGIN</a></li>
+                <li class="Producto"><a href="producto.html">PRODUCTS</li>
+                <li class="Ornedes"> <a href="almacen.html">ALMACEN</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+<div class="contenedor-todo">
+
+        <div class="cont-enc-pro">
+
+            <div class="contenedor-encabezado">
+                <div class="best-offers">
+                    <h1>BEST OFFERS</h1>
+                    <h2>JUST FOR YOU</h2>
+                </div>
+            </div>
+
+            <div id="main" class="contenedor-productos">
+                <div class="tarjeta">
+                    <div class="fototarjeta">
+                        <img class="imgtarjeta1" src="https://.jpg" alt="">
+                    </div>
+                    <div class="nombre">
+                        <label class="id">ID</label>
+                        <label class="name">Nombre</label>
+                    </div>
+
+                    <div class="botones">
+                        <button class="ver"><a href="descripcion.html">VER</a></button>
+                        <button class="add">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="cont-carrito">
+
+            <aside class="carrito">
+                <h2>Carrito de Compras</h2>
+                <div class="carrito-items">
+
+                </div>
+                <div class="carrito-total">
+                    <p>Total: <span id="total">$0.00</span></p>
+                </div>
+                <div class="descuento">
+                    <input type="text" id="codigo-descuento" placeholder="Código de descuento">
+                    <button id="aplicar-descuento">Aplicar</button>
+                </div>
+
+                <button id="finalizar-compra"> 
+                    <a href="almacen.html"></a> Vender
+                  </button>
+
+            </aside>
+        </div>
+
+    </div>
+
+    </div>
+<script src="js/producto.js"></script>
+
+</body>
+
+</html>
