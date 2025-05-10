@@ -143,11 +143,29 @@ document.addEventListener("DOMContentLoaded", () => {
             itemCarrito.classList.add("carrito-item");
 
             itemCarrito.innerHTML = `
-                <img src="${item.imagen}" alt="${item.nombre}" width="50">
-                <span class="nombre-item">${item.nombre}</span>
-                <span class="precio-item">$${item.precio.toFixed(2)}</span>
-                <span class="cantidad-item">Cantidad: ${item.cantidad}</span>
-                <button class="eliminar-item" data-id="${item.id}">Eliminar</button>
+                <div class="conteniendo-items">
+                    <div class="img-carrito">
+                        <img src="${item.imagen}" alt="${item.nombre}" width="50">
+                    </div>
+
+                    <div class="cont-item-precio">
+                        <div class="item-nombre">
+                            <span class="nombre-item">${item.nombre}</span>
+                        </div>
+
+
+                        <div class="item-precio">
+                            <span class="precio-item">$${item.precio.toFixed(2)}</span>
+                        </div>
+
+                        <div class="item-cantidad">
+                            <span class="cantidad-item">Cant: ${item.cantidad}</span>
+                            <button class="eliminar-item" data-id="${item.id}">X</button>
+                        </div>
+
+                    </div>
+                </div>
+
             `;
 
             carritoItems.appendChild(itemCarrito);
