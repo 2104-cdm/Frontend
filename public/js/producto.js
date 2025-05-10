@@ -15,7 +15,7 @@ if (!token) {
             if (response.status === 401 || response.status === 403) {
                 alert('Sesión expirada o no autorizada. Redirigiendo al login.');
                 localStorage.removeItem('token');
-                window.location.href = '/public/login.html';
+                window.location.href = '/public/logint.html';
             }
             throw new Error('Error de autenticación');
         }
@@ -33,13 +33,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const contenedorProductos = document.getElementById("main");
     const carritoItems = document.querySelector(".carrito-items");
     const totalElement = document.getElementById("total");
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert('No estás autenticado. Redirigiendo al login...');
+        window.location.href = '/public/login.html';
+        return;
+    }
 
     let total = 0;
     let carrito = [];
 
-    const token = localStorage.getItem('token');
-
-    // Cargar carrito desde el backend
+    // Cargar carrito desde backend
     function cargarCarritoDesdeBackend() {
         fetch("http://localhost:3000/api/carrito", {
             method: "GET",
@@ -52,10 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
             carrito = data.carrito || [];
             mostrarCarrito();
         })
-        .catch(error => console.error("Error al cargar desde el backend:", error));
+        .catch(error => console.error("Error al cargar carrito:", error));
     }
 
-    // Guardar carrito en el backend
+    // Guardar carrito en backend
     function guardarCarritoEnBackend() {
         fetch("http://localhost:3000/api/carrito", {
             method: "POST",
@@ -64,9 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Authorization": token
             },
             body: JSON.stringify({ carrito })
-        }).catch(error => console.error("Error al guardar en el backend:", error));
+        }).catch(error => console.error("Error al guardar carrito:", error));
     }
 
+    // Mostrar productos
     if (!window.listaProductosDisponibles) {
         console.error("Productos no disponibles.");
         return;
@@ -157,5 +163,74 @@ document.addEventListener("DOMContentLoaded", () => {
         totalElement.textContent = `$${total.toFixed(2)}`;
     }
 
-    cargarCarritoDesdeBackend(); 
+    
+    document.getElementById("finalizar-compra").addEventListener("click", () => {
+        if (carrito.length === 0) {
+            alert("El carrito está vacío.");
+            return;
+        }
+    
+        const venta = {
+            productos: carrito,
+            fecha: new Date(),
+            total: total,
+            despachado: false
+        };
+    
+        // Registrar la venta en el backend
+        fetch("http://localhost:3000/api/ventas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+            },
+            body: JSON.stringify(venta)
+        })
+        .then(res => {
+            if (!res.ok) throw new Error("Error al registrar la venta");
+            return res.json();
+        })
+        .then(data => {
+            // Una vez que la venta se registra, proceder a actualizar el inventario
+            actualizarInventario(carrito);
+    
+            alert("Venta registrada con éxito");
+            carrito = []; // Vaciar el carrito
+            mostrarCarrito(); // Actualizar la vista del carrito
+            guardarCarritoEnBackend(); // Guardar el carrito vacío en el backend
+            window.location.href = "./almacen.html"; // Redirigir al almacén
+        })
+        .catch(err => {
+            console.error("Error al vender:", err);
+            alert("No se pudo completar la venta");
+        });
+    });
+    
+    // Función para actualizar el inventario de productos vendidos
+    function actualizarInventario(carrito) {
+        carrito.forEach(producto => {
+            // Enviar solicitud para reducir el inventario del producto vendido
+            fetch(`http://localhost:3000/api/almacen/${producto.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token
+                },
+                body: JSON.stringify({
+                    cantidad: -producto.cantidad // Restar la cantidad vendida
+                })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("Error al actualizar el inventario");
+                return res.json();
+            })
+            .then(data => {
+                console.log(`Inventario actualizado para ${producto.nombre}`);
+            })
+            .catch(err => {
+                console.error("Error al actualizar el inventario:", err);
+            });
+        });
+    }
+    
 });

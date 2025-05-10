@@ -34,16 +34,27 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
             //si la respuesta no es ok, significa que hubo un error en el registro
             //y se muestra un mensaje de error
             console.error('Error:', data.message || 'Error en el registro');
+            //muestra el error en la consola
             return;
+            //si no se hace el return, se ejecuta el siguiente bloque de codigo
         }
         if (response.ok) {
+            //si la respuesta es ok, significa que el registro fue exitoso
+            //y se muestra un mensaje de éxito
             alert(data.message);
+            //muestra un mensaje de éxito al usuario
+            //y redirige al usuario a la pagina de login
             window.location.href = 'logint.html'; // Redirigir al login después del registro exitoso
         } else {
             alert(data.message || 'Error en el registro');
+            //si la respuesta no es ok, significa que hubo un error en el registro
+            //y se muestra un mensaje de error
         }
     } catch (error) {
+        //si hay un error en la conexión o en el servidor
         console.error('Error:', error);
+        //muestra el error en la consola
         alert('Error en el registro');
+        //muestra un mensaje de error al usuario
     }
 });
