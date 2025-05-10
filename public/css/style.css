@@ -202,6 +202,11 @@ input{
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: white;
+}
+
+.registro a{
+    color: rgb(255, 208, 0);
 }
 
 /* //////////////////////////////////////////////// */
@@ -211,12 +216,13 @@ input{
     width: 100%;
     height: 800px;
     display: flex;
+    /* background-color: aqua; */
 
     
 }
 
 .cont-enc-pro{
-    width: 80%;
+    width: 100%;
     height: 800px;
 
 }
@@ -240,19 +246,21 @@ input{
 
 .contenedor-productos {
     width: 100%;
-    min-height: 500px;
+    max-height: 500px;
     display: flex;
     flex-wrap: wrap; /* Permite que las tarjetas bajen a nuevas filas */
     justify-content: flex-start;
     gap: 20px; /* Espacio uniforme entre tarjetas */
     padding: 20px;
+    overflow: auto;
+    /* background-color: #28a745; */
 }
 
 .tarjeta {
     width: 250px;
     height: 350px;
     border-radius: 10px;
-    background-color: burlywood;
+    background-color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -262,7 +270,7 @@ input{
 .fototarjeta {
     width: 100%;
     height: 180px; /* altura fija para imagen */
-    background-color: rgb(161, 153, 117);
+    /* background-color: rgb(161, 153, 117); */
     overflow: hidden;
 }
 
@@ -276,20 +284,21 @@ input{
 .nombre{
     width: 100%;
     height: 100px;
-    background-color: rgb(75, 75, 75);
+    /* background-color: rgb(75, 75, 75); */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: medium;
     font-family: 'Franklin Gothic Medium';
+    gap: 10px;
     
 }
 
 .botones{
     width: 100%;
     height: 50px;
-    background-color: rgb(75, 75, 75);
+    /* background-color: rgb(0, 0, 0); */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -299,19 +308,23 @@ input{
 }
 
 .add{
-    width: 30px;
+    width: 40px;
     height: 20px;
     border-radius: 5px;
     background-color: rgb(55, 161, 6);
     position: relative;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: black;
+    color: rgb(255, 255, 255);
     border-style: none;
     margin-bottom: 13px;
 }
 
+.add:hover {
+    background-color: #185f27;
+}
+
 .ver{
-    width: 30px;
+    width: 40px;
     height: 20px;
     border-radius: 5px;
     background-color: rgb(255, 208, 0);
@@ -320,7 +333,8 @@ input{
     color: black;
     border-style: none;
     margin-bottom: 13px;
-
+    text-decoration: none;
+    
 }
 
 .ver a {
@@ -333,9 +347,15 @@ input{
 
 .cont-carrito{
     width: 20%;
-    height: 800px;
+    height: 600px;
     display: flex;
     justify-content: center;
+    position: absolute;
+    top: 85px;
+    right: 10px;
+    overflow: auto;
+    /* background-color: #1a73e8; */
+    
 
 }
 
@@ -347,7 +367,9 @@ input{
     flex: 1;
     max-width: 350px;
     position: absolute;
-
+    /* background-color: #d6ac23; */
+    /* margin-bottom: 5px; */
+    display: flexbox;
 }
 
 .carrito h2 {
@@ -357,13 +379,82 @@ input{
     color: black;
 }
 
-.carrito-item {
+.carrito-items {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 15px;
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
     border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+    overflow: auto;
+    column-count: 2;
+    /* background-color: antiquewhite; */
+    gap: 5px;
+
+}
+
+.conteniendo-items{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    /* background-color: #185f27; */
+
+}
+
+.cont-item-precio{
+    display: block;
+
+}
+
+.img-carrito{
+    width: 90px;
+    height: 80px;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.img-carrito img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex: 1;
+    min-width: 100px;
+
+}
+
+.item-nombre{
+    width: 200px;
+    height: 40px;
+    /* background-color: #1a73e8; */
+    flex-wrap: wrap;
+}
+
+.item-precio{
+    width: 200px;
+    height: 20px;
+    color: #218838;
+    /* background-color: #d12222; */
+}
+
+.item-cantidad{
+    width: 100%;
+    height: 20px;
+    /* background-color: #ec8b8b; */
+    display: flex;
+}
+
+.item-cantidad button{
+    margin-left: auto;
+    /* background-color: #d12222; */
+    min-width: 60px;
+    background-color: rgb(214, 5, 5);
+    border-radius: 5px;
+
+
 }
 
 .cantidad-control {
@@ -382,7 +473,7 @@ input{
     font-weight: bold;
     margin: 20px 0;
     text-align: right;
-    color: blue;
+    color: #2a9d8f;
 }
 
 #finalizar-compra {
@@ -410,7 +501,7 @@ input{
 
 .descuento button {
     flex: 1;
-    background-color: #457b9d;
+    background-color: #2a9d8f;
     color: white;
     border: none;
     border-radius: 0 4px 4px 0;
@@ -492,7 +583,7 @@ input{
 
 }
 
-.more{
+.back{
     width: 100PX;
     height: 40px;
     background-color: #70706f;
@@ -505,7 +596,7 @@ input{
 .cart-boton{
     width: 100PX;
     height: 40px;
-    background-color: #02ff0f;
+    background-color: #ffd102;
     color: black;
     border-radius: 10px;
     font-size: medium;
@@ -692,7 +783,7 @@ input{
     font-weight: bold;
 }
 .precio-item{
-    color: black;
+    color: rgb(13, 161, 7);
     font-weight: bold;
 }
 .cantidad-item{
@@ -700,6 +791,9 @@ input{
     font-weight: bold;
 }
 .eliminar-item{
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: bold;
+    min-width: 60px;
+    outline: none;
+    border: none;
 }
