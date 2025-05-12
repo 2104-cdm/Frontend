@@ -20,7 +20,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         if (data.token) {
             // Guardar el token en localStorage
             localStorage.setItem('token', data.token);
-            window.location.href = 'producto.html';  // Redirigir a la tienda
+            window.location.href = '/public/producto.html';  // Redirigir a la tienda
         } else {
             alert('Correo o contraseña incorrectos');
         }

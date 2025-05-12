@@ -797,3 +797,78 @@ input{
     outline: none;
     border: none;
 }
+@media screen and (max-width: 1024px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Centra horizontalmente */
+        padding: 10px;
+        width: 100%;
+        height: auto;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        width: 100%;
+        height: auto;
+    }
+    
+    .contenedor-usuario{
+        width: 90%;
+        height: auto;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        position: relative; /* En el flujo normal */
+        transform: none;
+        top: auto;
+        left: auto;
+        margin-top: 100px;
+        margin-bottom: 15px;
+    }
+    
+    .form#register-form {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .navegacion .lista-navegacion {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    
+    .navegacion .lista-navegacion li {
+        margin-bottom: 10px;
+    }
+    
+    .contenedor-logo .logo {
+        position: static;
+        margin-left: 0;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .encabezado {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 10px;
+    }
+}

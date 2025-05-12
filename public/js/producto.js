@@ -2,7 +2,7 @@ const token = localStorage.getItem('token');
 
 if (!token) {
     alert('No estás autenticado. Redirigiendo al login...');
-    window.location.href = '/public/login.html';
+    window.location.href = '/public/logint.html';
 } else {
     fetch('http://localhost:3000/api/tienda', {
         method: 'GET',
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!token) {
         alert('No estás autenticado. Redirigiendo al login...');
-        window.location.href = '/public/login.html';
+        window.location.href = '/public/logint.html';
         return;
     }
 
