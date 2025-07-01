@@ -4,10 +4,10 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-
+ 
     try {
         
-        const response = await fetch('http://localhost:3000/api/login', {  
+        const response = await fetch('http://localhost:3000/api/login/iniciarSeccion', {  
             method: 'POST',   
             headers: {
                 'Content-Type': 'application/json',
@@ -16,12 +16,16 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         });
 
         const data = await response.json();
-
+        
         if (data.token) {
-            // Guardar el token en localStorage
+            
             localStorage.setItem('token', data.token);
-            window.location.href = '/public/producto.html';  // Redirigir a la tienda
-        } else {
+            window.location.href = '/public/producto.html';  
+        }
+
+       
+        
+        else {
             alert('Correo o contraseña incorrectos');
         }
     } catch (error) {
@@ -29,4 +33,6 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         alert('Hubo un error al iniciar sesión');
     }
 });
- 
+
+
+

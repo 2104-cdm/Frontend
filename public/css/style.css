@@ -93,7 +93,12 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
-
+.ocultar{
+    display: none;
+}
+.ver{
+    display: block;
+}
 .descripcion p {
     width: 700px;
     height: 100px;
@@ -527,25 +532,29 @@ input{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     gap: 20px;
 }
 
 .imagen-grande{
+   
     width: 83%;
     height: 500px;
     gap: 20px;
+    overflow: hidden;
     background-color: blue;
     border-radius: 10px;
 }
 
 .cont-miniaturas{
-
+        overflow: hidden;
     display: flex;
     gap: 20px;
 }
 .miniaturas  {
     width: 250px;
     height: 250px;
+    overflow: hidden;
     background-color: #f3bc06;
     border-radius: 10px;
 }
